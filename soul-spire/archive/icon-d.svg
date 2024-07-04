@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1in"
+   height="1in"
+   viewBox="0 0 25.4 25.4"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="icon-d.svg"
+   inkscape:export-filename="icon-d.png"
+   inkscape:export-xdpi="150"
+   inkscape:export-ydpi="150"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="in"
+     showgrid="false"
+     inkscape:zoom="7.0056678"
+     inkscape:cx="36.898695"
+     inkscape:cy="48.674874"
+     inkscape:window-width="2194"
+     inkscape:window-height="1163"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#808080;stroke:#000000;stroke-width:1.27;stroke-dasharray:none;fill-opacity:1"
+       id="path3152"
+       cx="12.699999"
+       cy="12.699999"
+       r="12.038373" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.7px;fill:#fffff7;fill-opacity:1;stroke:#000000;stroke-width:0.83402;stroke-dasharray:none;stroke-opacity:1"
+       x="1.4580073"
+       y="31.416916"
+       id="text3993"
+       transform="scale(1.5761001,0.63447746)"><tspan
+         sodipodi:role="line"
+         id="tspan3991"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#fffff7;fill-opacity:1;stroke:#000000;stroke-width:0.83402;stroke-dasharray:none;stroke-opacity:1"
+         x="1.4580073"
+         y="31.416916" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.7556px;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.254;stroke-dasharray:none;stroke-opacity:1"
+       x="7.0955048"
+       y="19.003849"
+       id="text4198"><tspan
+         sodipodi:role="line"
+         id="tspan4196"
+         style="font-size:19.7556px;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.254;stroke-dasharray:none;stroke-opacity:1"
+         x="7.0955048"
+         y="19.003849">D</tspan></text>
+  </g>
+</svg>

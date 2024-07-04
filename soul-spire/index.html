@@ -1,0 +1,38 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/base.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="./favicon.svg" />
+  <script type="module" src="./render.js"></script>
+  <title>Soul Spire CCG</title>
+</head>
+
+<body>
+  <template>
+    <div class="card">
+      <div class="frame">
+        <div class="cost" data-display-if="cost">
+          <span data-slot="cost"></span>
+        </div>
+        <div class="power" data-display-if="power">
+          <span data-slot="power"></span>
+        </div>
+        <div class="body" data-display-if="body">
+          <span data-slot="body"></span>
+        </div>
+        <div class="data">
+          <span class="name" data-slot="name"></span>
+          <br>
+          <span data-slot="tags"></span>
+          <br>
+          <span data-slot="info">S: D: A: </span>
+        </div>
+      </div>
+    </div>
+  </template>
+</body>
+
+</html>

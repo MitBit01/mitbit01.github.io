@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="gradient1" x1="0%" x2="0%" y1="0%" y2="100%">
+      <!-- <stop offset="0%" stop-color="#cccccc" stop-opacity="100%" />
+      <stop offset="100%" stop-color="#444444" stop-opacity="100%" /> -->
+      <stop offset="0%" stop-color="goldenrod" stop-opacity="100%" />
+      <stop offset="11%" stop-color="royalblue" stop-opacity="100%" />
+      <stop offset="22%" stop-color="rebeccapurple" stop-opacity="100%" />
+      <stop offset="33%" stop-color="darkred" stop-opacity="100%" />
+      <stop offset="44%" stop-color="forestgreen" stop-opacity="100%" />
+      <stop offset="55%" stop-color="goldenrod" stop-opacity="100%" />
+      <stop offset="66%" stop-color="royalblue" stop-opacity="100%" />
+      <stop offset="77%" stop-color="rebeccapurple" stop-opacity="100%" />
+      <stop offset="88%" stop-color="darkred" stop-opacity="100%" />
+      <stop offset="100%" stop-color="forestgreen" stop-opacity="100%" />
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" fill="#ffffff" />
+  <line x1="45" y1="45" x2="0" y2="0" stroke="url(#gradient1)" stroke-linecap="round" stroke-width="2" />
+  <line x1="45" y1="45" x2="0" y2="0" stroke="url(#gradient1)" stroke-linecap="round" stroke-width="2" transform="rotate(30 50 50)" />
+  <line x1="45" y1="45" x2="0" y2="0" stroke="url(#gradient1)" stroke-linecap="round" stroke-width="2" transform="rotate(60 50 50)" />
+  <line x1="45" y1="45" x2="0" y2="0" stroke="url(#gradient1)" stroke-linecap="round" stroke-width="2" transform="rotate(90 50 50)" />
+  <line x1="45" y1="45" x2="0" y2="0" stroke="url(#gradient1)" stroke-linecap="round" stroke-width="2" transform="rotate(120 50 50)" />
+  <line x1="45" y1="45" x2="0" y2="0" stroke="url(#gradient1)" stroke-linecap="round" stroke-width="2" transform="rotate(150 50 50)" />
+  <line x1="45" y1="45" x2="0" y2="0" stroke="url(#gradient1)" stroke-linecap="round" stroke-width="2" transform="rotate(180 50 50)" />
+  <line x1="45" y1="45" x2="0" y2="0" stroke="url(#gradient1)" stroke-linecap="round" stroke-width="2" transform="rotate(210 50 50)" />
+  <line x1="45" y1="45" x2="0" y2="0" stroke="url(#gradient1)" stroke-linecap="round" stroke-width="2" transform="rotate(240 50 50)" />
+  <line x1="45" y1="45" x2="0" y2="0" stroke="url(#gradient1)" stroke-linecap="round" stroke-width="2" transform="rotate(270 50 50)" />
+  <line x1="45" y1="45" x2="0" y2="0" stroke="url(#gradient1)" stroke-linecap="round" stroke-width="2" transform="rotate(300 50 50)" />
+  <line x1="45" y1="45" x2="0" y2="0" stroke="url(#gradient1)" stroke-linecap="round" stroke-width="2" transform="rotate(330 50 50)" />
+</svg>

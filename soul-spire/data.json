@@ -1,0 +1,185 @@
+{
+  "cards": [
+    {
+      "body": "",
+      "colors": [],
+      "cost": "",
+      "name": "Soul Spire",
+      "power": "5000"
+    },
+    {
+      "body": "",
+      "colors": [],
+      "cost": "",
+      "name": "Charge Well",
+      "power": ""
+    },
+    {
+      "body": "",
+      "colors": [],
+      "cost": "",
+      "name": "Charge Well",
+      "power": ""
+    },
+    {
+      "body": "",
+      "colors": [],
+      "cost": "2",
+      "name": "Colorless Character",
+      "power": "0"
+    },
+    {
+      "body": "",
+      "colors": [
+        "light"
+      ],
+      "cost": "2",
+      "name": "White Character",
+      "power": "1000"
+    },
+    {
+      "body": "",
+      "colors": [
+        "water"
+      ],
+      "cost": "2",
+      "name": "Blue Character",
+      "power": "10000"
+    },
+    {
+      "body": "",
+      "colors": [
+        "dark"
+      ],
+      "cost": "2",
+      "name": "Black Character",
+      "power": "15000"
+    },
+    {
+      "body": "Rush",
+      "colors": [
+        "fire"
+      ],
+      "cost": "2",
+      "name": "Red Character",
+      "power": "20000"
+    },
+    {
+      "body": "",
+      "colors": [
+        "nature"
+      ],
+      "cost": "2",
+      "name": "Green Character",
+      "power": "99000"
+    },
+    {
+      "body": "",
+      "colors": [],
+      "cost": "10",
+      "name": "Colorless Event",
+      "power": ""
+    },
+    {
+      "body": "",
+      "colors": [
+        "light",
+        "water"
+      ],
+      "cost": "2",
+      "name": "White Blue Event",
+      "power": ""
+    },
+    {
+      "body": "",
+      "colors": [
+        "light",
+        "dark"
+      ],
+      "cost": "2",
+      "name": "White Black Event",
+      "power": ""
+    },
+    {
+      "body": "",
+      "colors": [
+        "light",
+        "fire"
+      ],
+      "cost": "2",
+      "name": "White Red Event",
+      "power": ""
+    },
+    {
+      "body": "",
+      "colors": [
+        "light",
+        "nature"
+      ],
+      "cost": "2",
+      "name": "White Green Event",
+      "power": ""
+    },
+    {
+      "body": "",
+      "colors": [
+        "water",
+        "dark"
+      ],
+      "cost": "2",
+      "name": "Blue Black Event",
+      "power": ""
+    },
+    {
+      "body": "",
+      "colors": [
+        "water",
+        "fire"
+      ],
+      "cost": "2",
+      "name": "Blue Red Event",
+      "power": ""
+    },
+    {
+      "body": "",
+      "colors": [
+        "water",
+        "nature"
+      ],
+      "cost": "2",
+      "name": "Blue Green Event",
+      "power": ""
+    },
+    {
+      "body": "",
+      "colors": [
+        "dark",
+        "fire"
+      ],
+      "cost": "2",
+      "name": "Black Red Event",
+      "power": ""
+    },
+    {
+      "body": "",
+      "colors": [
+        "dark",
+        "nature"
+      ],
+      "cost": "2",
+      "name": "Black Green Event",
+      "power": ""
+    },
+    {
+      "body": "",
+      "colors": [
+        "fire",
+        "nature"
+      ],
+      "cost": "2",
+      "name": "Red Green Event",
+      "power": ""
+    }
+  ],
+  "todo": "markdown, artist, image, copies, designer, set, number"
+}
