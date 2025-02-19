@@ -6,30 +6,13 @@
   <title>mitbit01.github.com</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>🧮</text></svg>"></link>
   <style>
-    @import url("https://unpkg.com/sanitize.css");
-
-    /* https://jenil.github.io/chota/ */
-    @import url("https://unpkg.com/chota@latest");
-
-    /*
-      font-family: "Roboto", sans-serif;
-      font-family: "Roboto Condensed", sans-serif;
-      font-family: "Roboto Mono", monospace;
-      font-weight: 400; font-weight: 700; font-style: normal; font-style: italic;
-    */
-    @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
-    /* https://fonts.google.com/icons <span class="material-symbols-rounded">search</span> */
-    @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,0,0');
+    @import url("https://unpkg.com/chota@latest"); /* https://jenil.github.io/chota/ */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,0,0'); /* https://fonts.google.com/icons */
 
     :root {
       --font-family-sans: "Roboto", sans-serif;
-      --font-family-condensed: "Roboto Condensed", sans-serif;
       --font-family-mono: "Roboto Mono", monospace;
-    }
-
-    html {
-      font-family: var(--font-family-sans);
     }
 
     body.dark {
@@ -40,35 +23,28 @@
       --color-darkGrey: #777;
     }
 
-    body > header {
+    /* body > header {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
 
       font-family: var(--font-family-condensed);
-    }
-
-    body > .container {
-      /* padding-left: 1em;
-      padding-right: 1em; */
-      max-width: 1440px;
-    }
-
-    [data-placeholder]:empty:not(:focus):before {
-      content: attr(data-placeholder);
-      color: var(--color-grey);
-      font-style: italic;
-    }
+    } */
   </style>
 </head>
 
 <body>
-  <hr>
-  <header>
-    <a class="button icon-only clear is-marginless is-paddingless" href="./"><span class="material-symbols-rounded">home</span></a>
-    <span class="is-small">mitbit01.github.com</span>
-    <button id="light-mode" class="button icon-only clear is-marginless is-paddingless" type="button"><span class="material-symbols-rounded">light_mode</span></button>
-    <button id="dark-mode" class="button icon-only clear is-marginless is-paddingless" type="button"><span class="material-symbols-rounded">dark_mode</span></button>
+  <header class="container nav">
+    <div class="nav-left">
+      <a class="button icon-only clear is-marginless is-paddingless" href="./"><span class="material-symbols-rounded">home</span></a>
+    </div>
+    <div class="nav-center">
+      <span class="is-vertical-align"><code>mitbit01.github.com</code></span>
+    </div>
+    <div class="nav-right">
+      <button id="light-mode" class="button icon-only clear is-marginless is-paddingless" type="button"><span class="material-symbols-rounded">light_mode</span></button>
+      <button id="dark-mode" class="button icon-only clear is-marginless is-paddingless" type="button"><span class="material-symbols-rounded">dark_mode</span></button>
+    </div>
   </header>
   <hr>
   <main class="container">

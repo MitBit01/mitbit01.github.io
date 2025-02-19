@@ -1,9 +1,17 @@
+<style>
+  [data-placeholder]:empty:not(:focus):before {
+      content: attr(data-placeholder);
+      color: var(--color-grey);
+      font-style: italic;
+    }
+</style>
+
 <h1>Bead Encoding</h1>
 <label for="text-input">Text Input</label>
 <input id="text-input" placeholder="Enter Text">
 <hr>
 <label for="text-output">Encoded Output</label>
-<pre><output id="text-output" name="text-output" for="text-input" placeholder="Output"><br></output></pre>
+<pre><output id="text-output" name="text-output" for="text-input" data-placeholder="Output"></output></pre>
 <script>
   const beadsByLetter = new Map([['0','⚪⚪⚪'],
     ['A','⚪⚪🔴'],['B','⚪⚪⚫'],['C','⚪🔴⚪'],

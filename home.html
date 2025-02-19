@@ -1,8 +1,8 @@
 <h1>Launcher</h1>
-<div id="card-container" class="row is-vertical-align">
-</div>
+<div id="card-container" class="row is-vertical-align"></div>
+
 <template id="card-template">
-  <div class="col-3">
+  <div class="col-4">
     <div class="card">
       <header><h4></h4></header>
       <p></p>
@@ -12,30 +12,61 @@
     </div>
   </div>
 </template>
-<script id="card-data" type="application/json">
-[
-  {"name": "History", "description": "Changelog for the site.", "target": "./?page=history"},
-  {"name": "Bead Encoding", "description": "Encodes a string into beads.", "target": "./?page=bead-encoding"},
-  {"name": "Soul Spire", "description": "Render cards for Tabletop Simulator or Print & Play.", "target": "../soul-spire/"},
-  {"name": "Home", "description": "Launches other pages.", "target": "./"}
-]
+
+<table>
+  <thead>
+    <th>Page</th>
+    <th>Description</th>
+  </thead>
+  <tbody id="row-container"></tbody>
+</table>
+
+<template id="row-template">
+  <tr>
+    <td><a></a></td>
+    <td class="description">Early version of this site with subpages. Kept as a reference.</td>
+  </tr>
+</template>
+
+<script id="page-data" type="application/json">
+  [
+    {"name": "Bead Encoding", "description": "Encodes a string into beads.", "target": "./?page=bead-encoding"},
+    {"name": "Soul Spire", "description": "Render cards for Tabletop Simulator or Print & Play.", "target": "../soul-spire/"},
+    {"name": "Home", "description": "Launches other pages.", "target": "./"}
+  ]
 </script>
+
 <script>
   /** @type HTMLTemplateElement */
-  const template = document.getElementById('card-template')
-  const data = document.getElementById('card-data')
-  const container = document.getElementById('card-container')
+  const cardTemplate = document.getElementById('card-template')
+  const cardContainer = document.getElementById('card-container')
+
+  const rowContainer = document.getElementById('row-container')
+  const rowTemplate = document.getElementById('row-template')
+
+  const data = document.getElementById('page-data')
 
   for (const datum of JSON.parse(data.textContent)) {
-    const clone = template.content.cloneNode(true)
+    // Card
+    let clone = cardTemplate.content.cloneNode(true)
     clone.querySelector('h4').textContent = datum.name;
     clone.querySelector('p').textContent = datum.description;
 
     /** @type HTMLAnchorElement */
-    const anchor = clone.querySelector('a')
+    let anchor = clone.querySelector('a')
     anchor.textContent = datum.name;
     anchor.href = datum.target;
 
-    container.appendChild(clone)
+    cardContainer.appendChild(clone)
+
+    // Table
+    clone = rowTemplate.content.cloneNode(true)
+    anchor = clone.querySelector('a')
+    anchor.textContent = datum.name;
+    anchor.href = datum.target;
+
+    clone.querySelector('td.description').textContent = datum.description;
+
+    rowContainer.appendChild(clone)
   }
 </script>
