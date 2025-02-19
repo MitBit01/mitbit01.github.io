@@ -23,91 +23,111 @@
       --color-darkGrey: #777;
     }
 
-    /* body > header {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-
-      font-family: var(--font-family-condensed);
-    } */
+    .text-normal {
+      color:var(--font-color);
+    }
   </style>
 </head>
 
 <body>
-  <header class="container nav">
+  <header class="container nav is-vertical-align">
     <div class="nav-left">
-      <a class="button icon-only clear is-marginless is-paddingless" href="./"><span class="material-symbols-rounded">home</span></a>
+      <a class="button icon-only clear" href="?page=launcher">
+        <span class="material-symbols-rounded">rocket_launch</span>
+      </a>
     </div>
     <div class="nav-center">
-      <span class="is-vertical-align"><code>mitbit01.github.com</code></span>
+      <span><code>mitbit01.github.com</code></span>
     </div>
     <div class="nav-right">
-      <button id="light-mode" class="button icon-only clear is-marginless is-paddingless" type="button"><span class="material-symbols-rounded">light_mode</span></button>
-      <button id="dark-mode" class="button icon-only clear is-marginless is-paddingless" type="button"><span class="material-symbols-rounded">dark_mode</span></button>
+      <button id="disable-dark-mode" class="button icon-only clear">
+        <span class="material-symbols-rounded">light_mode</span>
+      </button>
+      <button id="enable-dark-mode" class="button icon-only clear">
+        <span class="material-symbols-rounded">dark_mode</span>
+      </button>
     </div>
   </header>
   <hr>
   <main class="container">
   </main>
   <script>
-    // Page navigation
+    (function() {
+      'use strict'
 
-    function navigateTo(page) {
-      fetch(`./${page}.html`)
-      .then(res => res.ok ? res : fetch('./home.html'))
-      .then(res => res.text())
-      .then(html => {
-        const template = document.createElement('template')
-        template.innerHTML = html
+      // Helpers
+      function load(key) {
+        return JSON.parse(window.sessionStorage.getItem(key))
+      }
 
-        Array.from(template.content.querySelectorAll('script')).forEach(old => {
-          const clone = document.createElement('script')
-          Array.from(old.attributes).forEach(attr => clone.setAttribute(attr.name, attr.value))
-          clone.text = old.text
-          old.parentNode?.replaceChild(clone, old)
-        })
+      function save(key, value) {
+        value == null ? window.sessionStorage.removeItem(key) : window.sessionStorage.setItem(key, JSON.stringify(value))
+      }
 
-        document.body.querySelector('main')?.replaceChildren(template.content)
+      // Routing
+      window.onload = () => navigate(new URL(window.location.href).searchParams.get('page') ?? 'launcher')
+      window.onpopstate = () => navigate(new URL(window.location.href).searchParams.get('page') ?? 'launcher')
+      document.body.addEventListener('click', e => {
+        const anchor = e.target.closest('a')
+        if (!anchor)
+          return
+
+        const page = new URL(anchor.href).searchParams.get('page')
+        if (!page)
+          return
+
+        e.preventDefault()
+
+        const url = new URL(window.location.href)
+        url.searchParams.set('page', page)
+        window.history.pushState({}, '', url)
+
+        navigate(page)
       })
-    }
 
-    const page = new URL(window.location.href).searchParams.get('page') ?? 'home'
-    navigateTo(page)
+      async function navigate(page) {
+        const template = document.createElement('template')
 
-    // Dark mode
+        let res = await fetch(`./${page}.html`)
+        if (res.ok) {
+          template.innerHTML = await res.text()
 
-    /** @type HTMLButtonElement */
-    const lightModeButton = document.getElementById('light-mode')
-    /** @type HTMLButtonElement */
-    const darkModeButton = document.getElementById('dark-mode')
+          Array.from(template.content.querySelectorAll('script')).forEach(old => {
+            const clone = document.createElement('script')
+            Array.from(old.attributes).forEach(attr => clone.setAttribute(attr.name, attr.value))
+            clone.text = old.text
+            old.parentNode?.replaceChild(clone, old)
+          })
+        } else {
+          template.innerHTML = '<h1>Error</h1><p></p>'
+          template.content.querySelector('p').textContent = `Could not find page "${page}"`
+        }
 
-    function setLightColorMode() {
-      window.sessionStorage.setItem('color-mode', 'light')
-      document.body.classList.remove('dark')
-      lightModeButton.classList.add('is-hidden')
-      darkModeButton.classList.remove('is-hidden')
-    }
+        document.body.querySelector('main').replaceChildren(template.content)
+      }
 
-    function setDarkColorMode() {
-      window.sessionStorage.setItem('color-mode', 'dark')
-      document.body.classList.add('dark')
-      lightModeButton.classList.remove('is-hidden')
-      darkModeButton.classList.add('is-hidden')
-    }
+      // Dark mode
+      const disableDarkModeButton = document.getElementById('disable-dark-mode')
+      const enableDarkModeButton = document.getElementById('enable-dark-mode')
 
-    lightModeButton.addEventListener('click', () => setLightColorMode())
-    darkModeButton.addEventListener('click', () => setDarkColorMode())
+      disableDarkModeButton.onclick = () => setDarkMode(false)
+      enableDarkModeButton.onclick = () => setDarkMode(true)
 
-    const colorMode = window.sessionStorage.getItem('color-mode')
-    if (colorMode === 'light') {
-      setLightColorMode()
-    } else if (colorMode === 'dark') {
-      setDarkColorMode()
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setDarkColorMode()
-    } else {
-      setLightColorMode()
-    }
+      function setDarkMode(enabled) {
+        save('dark-mode', enabled)
+        if (enabled) {
+          document.body.classList.add('dark')
+          disableDarkModeButton.classList.remove('is-hidden')
+          enableDarkModeButton.classList.add('is-hidden')
+        } else {
+          document.body.classList.remove('dark')
+          disableDarkModeButton.classList.add('is-hidden')
+          enableDarkModeButton.classList.remove('is-hidden')
+        }
+      }
+
+      setDarkMode(load('dark-mode') ?? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches))
+    })()
   </script>
 </body>
 

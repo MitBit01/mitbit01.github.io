@@ -1,0 +1,58 @@
+<h1>Launcher</h1>
+
+<p>
+<label for="search-input">Search by Title</label>
+<input id="search-input" type="search" placeholder="Page Title">
+</p>
+
+<div id="card-container" class="row"></div>
+
+<style>
+  .card {
+    min-height: 12rem;
+  }
+</style>
+
+<template id="card-template">
+  <div class="col-3">
+    <a class="href-target">
+      <div class="card">
+        <header>
+          <h4 class="text-primary name-target"></h4>
+        </header>
+        <p class="text-normal description-target"></p>
+      </div>
+    </a>
+  </div>
+</template>
+
+<script>
+  (function() {
+    'use strict'
+
+    const input = document.querySelector('#search-input')
+    const cardTemplate = document.getElementById('card-template')
+    const cardContainer = document.getElementById('card-container')
+
+    const pages = [
+      {name: 'Bead Encoding', description: 'Encodes a string into beads.', href: '?page=bead-encoding'},
+      {name: 'Soul Spire', description: 'Render cards for Tabletop Simulator or Print & Play.', href: '../soul-spire/'},
+      {name: 'Launcher', description: 'Launches other pages.', href: '?page=launcher'},
+    ]
+
+    input.addEventListener('input', () => renderOptions())
+    renderOptions()
+
+    function renderOptions() {
+      cardContainer.innerHTML = ''
+      pages.filter(page => page.name.toLowerCase().includes(input.value.toLowerCase()))
+      .forEach(page => {
+        let clone = cardTemplate.content.cloneNode(true)
+        clone.querySelector('.name-target').textContent = page.name
+        clone.querySelector('.description-target').textContent = page.description
+        clone.querySelector('.href-target').href = page.href
+        cardContainer.appendChild(clone)
+      })
+    }
+  })()
+</script>
