@@ -1,9 +1,9 @@
 <style>
   [data-placeholder]:empty:not(:focus):before {
-      content: attr(data-placeholder);
-      color: var(--color-grey);
-      font-style: italic;
-    }
+    content: attr(data-placeholder);
+    color: var(--color-grey);
+    font-style: italic;
+  }
 </style>
 
 <h1>Dice Roller <span class="material-symbols-rounded">casino</span></h1>
@@ -34,45 +34,16 @@
 </fieldset>
 
 <script>
-  (function() {
-    'use strict'
+(async function() {
+  'use strict'
+  const random = await import('./random.js')
+  console.log(random)
 
-    const output = document.body.querySelector('#roll-output')
+  const output = document.body.querySelector('#roll-output')
 
-    document.body.querySelectorAll('[data-dice-button]')
-    .forEach(button => button.onclick = () => {
-      output.value = randInt(1, button.dataset.diceButton)
-    })
-
-    function randInt(min, max) {
-      return Math.floor(Math.random() * (max - min + 1) + min)
-    }
-
-    function roll(count, size) {
-      let sum = 0
-      for (let i = 0; i < count; i++) {
-        sum += randInt(1, size)
-      }
-      return sum
-    }
-
-    function randFrom(/**@type {any[]}*/arr) {
-      return arr[randInt(0, arr.length-1)]
-    }
-
-    function randHexId() {
-      return randInt(1, 0xfffffffe).toString(16)
-    }
-
-    function randCyAbility(/**@type {number}*/mod) {
-      const r = roll(3, 6) + mod
-      return r >= 17 ? '+3'
-      : r >= 15 ? '+2'
-      : r >= 13 ? '+1'
-      : r >= 9 ? '±0'
-      : r >= 7 ? '-1'
-      : r >= 5 ? '-2'
-      : '-3'
-    }
-  })()
+  document.body.querySelectorAll('[data-dice-button]')
+  .forEach(button => button.onclick = () => {
+    output.value = random.int(1, button.dataset.diceButton)
+  })
+})()
 </script>
