@@ -1,0 +1,162 @@
+<style>
+  main h1,
+  main h2,
+  main h3 {
+    font-family: Metamorphous;
+    color: var(--color-error);
+  }
+</style>
+
+<header id="top">
+  <em>
+    On this ancient, cratered Urth,
+    after the Ancestors stole the Warp,
+    after all that was fell to ruin,
+    and now as the sky rains down,
+    we wander where the gods have left us...
+  </em>
+  <div class="row">
+    <div class="col is-vertical-align">
+      <h1>Abandoned</h1>
+    </div>
+    <div class="col is-right">
+      <nav class="tabs">
+        <a href="#rules">Rules</a>
+        <a href="#generators">Generators</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section id="rules">
+  <div class="row">
+    <div class="col is-vertical-align">
+      <h2>Rules</h2>
+    </div>
+    <div class="col is-right">
+      <nav class="tabs">
+        <a href="#core-rules">Core</a>
+        <a href="#supplemental-rules">Supplemental</a>
+      </nav>
+    </div>
+  </div>
+
+  <section id="core-rules">
+    <h3>Core Rules</h3>
+
+    <p>
+      In this game, you control a Vagabond roaming an Abandoned Urth.
+      If you are new to the game, or your last Vagabond died, <a href="#gen-character">generate a new Vagabond</a>.
+    </p>
+    <p>
+      On your turn, tell the Judge what you want to do.
+      You can do anything!
+      The Judge will tell you what happens and what your Vagabond perceives.
+    </p>
+    <p>
+      When you attempt to do something risky, the Judge may call for a Check.
+      Checks are easy to resolve:
+    </p>
+    <ol>
+      <li>
+        The Judge says, "Make a <code>Stat</code> check (with Advantage/Disadvantage)!"
+      </li>
+      <li>
+        Say, "I need to roll <code>Target</code>!"
+      </li>
+      <li>
+        Roll <code>1d20</code> and say what you rolled.
+        If you have Advantage, roll <code>2d20</code>and keep the highest. With Disadvantage, keep the lowest.
+      </li>
+      <li>
+        You may spend a Luck Die to add <code>1d6</code>, calling out the new total. Repeat as you like.
+      </li>
+      <li>
+        If you meet or exceed the <code>Target</code>, you succeed! The Judge will describe the results.
+        Otherwise, you fail! Gain 1 Luck Die. The Judge will describe the consequences.
+      </li>
+    </ol>
+
+    <p>
+      You begin each session with Luck Dice equal to your Level.
+      At the end of each adventure, the Judge will award 1 Experience.
+      You reach the next Level when you gain 1 Experience per current Level, plus 1.
+      The amount of Experience required to reach Level <math><mi>x</mi></math> is
+      <math>
+        <mfrac><mrow><mi>x</mi><mo>(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></mfrac>
+      </math>.
+    </p>
+
+    <p>
+      The Stat the Judge calls for varies:
+    </p>
+
+    <ul>
+      <li>Strength for toughness, fortitude, and melee attacks.</li>
+      <li>Agility for dexterity, reflexes, and dodging attacks.</li>
+      <li>Wits for presence, willpower, spells, and ranged attacks.</li>
+    </ul>
+
+    <p>
+      When you take damage, you lose Health.
+      When you reach 0 Health, make a Strength Check. If you succeed, gain 1 Health. Otherwise, you die.
+      You recover all Health after sleeping or eating in safety, up to once or thrice per day, respectively.
+    </p>
+
+    <p>
+      You can carry about 10 Items.
+      Some items stack.
+      Barter is always an option.
+      Some items cost <math><msup><mn>10</mn><mi>r</mi></msup><mo>&#xd7;</mo><mi>d</mi><mn>6</mn><mi>c</mi></math>
+    </p>
+
+    <p>
+      Feats are features intrinsic to your character, like tenets and powers.
+      Bonds are your ties to the world, like contacts and memberships.
+    </p>
+
+    <a href="#top">Top</a>
+  </section>
+
+  <section id="supplemental-rules">
+    <h3>Supplemental Rules</h3>
+
+    <a href="#top">Top</a>
+  </section>
+</section>
+
+<hr>
+
+<section id="generators">
+  <div class="row">
+    <div class="col is-vertical-align">
+      <h2>Generators</h2>
+    </div>
+    <div class="col is-right">
+      <nav class="tabs">
+        <a href="#gen-character">Characters</a>
+        <a href="#gen-monster">Monsters</a>
+      </nav>
+    </div>
+  </div>
+
+  <section id="gen-character">
+    <h3>Characters</h3>
+
+    <a href="#top">Top</a>
+  </section>
+
+  <section id="gen-monster">
+    <h3>Monsters</h3>
+
+    <a href="#top">Top</a>
+  </section>
+</section>
+
+<script>
+(async function() {
+  'use strict'
+  const random = import('./random.js')
+
+})()
+</script>
