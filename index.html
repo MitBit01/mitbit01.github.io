@@ -55,7 +55,9 @@
     (function() {
       'use strict'
 
+      // ========================================
       // Helpers
+      // ========================================
       function load(key) {
         return JSON.parse(window.sessionStorage.getItem(key))
       }
@@ -64,17 +66,19 @@
         value == null ? window.sessionStorage.removeItem(key) : window.sessionStorage.setItem(key, JSON.stringify(value))
       }
 
+      // ========================================
       // Routing
+      // ========================================
       window.onload = () => navigate(new URL(window.location.href).searchParams.get('page') ?? 'launcher')
       window.onpopstate = () => navigate(new URL(window.location.href).searchParams.get('page') ?? 'launcher')
       document.body.addEventListener('click', e => {
         const anchor = e.target.closest('a')
         if (!anchor)
-          return
+          return // Ignore non-links
 
         const page = new URL(anchor.href).searchParams.get('page')
         if (!page)
-          return
+          return // Ignore external links
 
         e.preventDefault()
 
@@ -106,7 +110,9 @@
         document.body.querySelector('main').replaceChildren(template.content)
       }
 
+      // ========================================
       // Dark mode
+      // ========================================
       const disableDarkModeButton = document.getElementById('disable-dark-mode')
       const enableDarkModeButton = document.getElementById('enable-dark-mode')
 

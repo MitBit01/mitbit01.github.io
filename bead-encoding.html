@@ -52,8 +52,8 @@
       return str
     }
 
-    const input = document.querySelector('#text-input')
-    const output = document.querySelector('#text-output')
+    const input = document.body.querySelector('#text-input')
+    const output = document.body.querySelector('#text-output')
 
     input.addEventListener('input', () => {
       if (input.value === '') {

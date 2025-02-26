@@ -30,15 +30,15 @@
   (function() {
     'use strict'
 
-    const input = document.querySelector('#search-input')
+    const input = document.getElementById('search-input')
     const cardTemplate = document.getElementById('card-template')
     const cardContainer = document.getElementById('card-container')
 
     const pages = [
-      {name: 'Bead Encoding', description: 'Encodes a string into beads.', href: '?page=bead-encoding'},
-      {name: 'Dice Roller', description: 'Roll TTRPG dice.', href: '?page=dice-roller'},
-      {name: 'Launcher', description: 'Launches other pages.', href: '?page=launcher'},
-      {name: 'Soul Spire', description: 'Render cards for Tabletop Simulator or Print & Play.', href: '../soul-spire/'},
+      { name: 'Bead Encoding', description: 'Encodes a string into beads.', href: '?page=bead-encoding' },
+      { name: 'Dice Roller', description: 'Roll TTRPG dice.', href: '?page=dice-roller' },
+      { name: 'Launcher', description: 'Launches other pages.', href: '?page=launcher' },
+      { name: 'Soul Spire', description: 'Render cards for Tabletop Simulator or Print & Play.', href: '../soul-spire/' },
     ]
 
     input.addEventListener('input', () => renderOptions())

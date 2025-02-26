@@ -37,9 +37,9 @@
   (function() {
     'use strict'
 
-    const output = document.querySelector('#roll-output')
+    const output = document.body.querySelector('#roll-output')
 
-    document.querySelectorAll('[data-dice-button]')
+    document.body.querySelectorAll('[data-dice-button]')
     .forEach(button => button.onclick = () => {
       output.value = randInt(1, button.dataset.diceButton)
     })

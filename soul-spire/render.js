@@ -2,7 +2,7 @@ import { Remarkable } from 'https://cdn.jsdelivr.net/npm/remarkable@2.0.1/+esm'
 const md = new Remarkable();
 
 // Set up document elements
-/**@type {HTMLTemplateElement}*/ const template = document.querySelector('template')
+/**@type {HTMLTemplateElement}*/ const template = document.body.querySelector('template')
 /**@type {HTMLSpanElement|HTMLDivElement}*/ let elem
 
 // Get data
