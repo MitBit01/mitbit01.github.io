@@ -5,6 +5,12 @@
     font-family: Metamorphous;
     color: var(--color-error);
   }
+
+  [data-placeholder]:empty:not(:focus):before {
+    content: attr(data-placeholder);
+    color: var(--color-grey);
+    font-style: italic;
+  }
 </style>
 
 <header id="top">
@@ -143,6 +149,11 @@
   <section id="gen-character">
     <h3>Characters</h3>
 
+    <button id="new-character-btn" class="button primary">New Character</button>
+    <button id="copy-character-btn" class="button">Copy Character</button>
+
+    <pre><output id="new-character-out" for="new-character-btn" data-placeholder="Output"></output></pre>
+
     <a href="#top">Top</a>
   </section>
 
@@ -156,7 +167,23 @@
 <script>
 (async function() {
   'use strict'
-  const random = import('./random.js')
+  const { Random } = await import('./random.js')
+  const rand = new Random()
 
+  document.getElementById('new-character-btn').addEventListener('click', () => {
+    document.getElementById('new-character-out').value =
+    `${'(Name)'}, Level 0 ${'(Type)'}\n` +
+    `${'(Description)'}\n` +
+    `Strength ${rand.diceFormulaPostfix('2 6 d 3 +')}+ Agility ${rand.diceFormulaPostfix('2 6 d 3 +')}+ Wits ${rand.diceFormulaPostfix('2 6 d 3 +')}+\n` +
+    `Health 6 Experience 0 Luck Dice 0\n` +
+    `Items: (Fill in)\n` +
+    `Feats: (Fill in)\n` +
+    `Bonds: (Fill in)\n` +
+    `Where: (Starting Location)`
+  })
+
+  document.getElementById('copy-character-btn').addEventListener('click', () => {
+    navigator.clipboard.writeText(document.getElementById('new-character-out').value)
+  })
 })()
 </script>

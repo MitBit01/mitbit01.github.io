@@ -36,14 +36,14 @@
 <script>
 (async function() {
   'use strict'
-  const random = await import('./random.js')
-  console.log(random)
+  const { Random } = await import('./random.js')
+  const rand = new Random()
 
   const output = document.body.querySelector('#roll-output')
 
   document.body.querySelectorAll('[data-dice-button]')
   .forEach(button => button.onclick = () => {
-    output.value = random.int(1, button.dataset.diceButton)
+    output.value = rand.int(1, button.dataset.diceButton)
   })
 })()
 </script>
