@@ -15,6 +15,10 @@
       --font-family-mono: "Roboto Mono", monospace;
     }
 
+    .text-normal {
+      color:var(--font-color);
+    }
+
     body.dark {
       --bg-color: #000;
       --bg-secondary-color: #131316;
@@ -22,15 +26,11 @@
       --color-grey: #ccc;
       --color-darkGrey: #777;
     }
-
-    .text-normal {
-      color:var(--font-color);
-    }
   </style>
 </head>
 
-<body>
-  <header class="container nav is-vertical-align">
+<body class="container">
+  <header id="top" class="nav is-vertical-align">
     <div class="nav-left">
       <a class="button icon-only clear" href="?page=launcher">
         <span class="material-symbols-rounded">rocket_launch</span>
@@ -49,8 +49,13 @@
     </div>
   </header>
   <hr>
-  <main class="container">
+  <main>
   </main>
+  <hr>
+  <footer class="text-center">
+    <p>©️ Mitchell Petit, available under MIT license.</p>
+    <p><a href="#top">Top</a> | <a href="https://github.com/MitBit01/mitbit01.github.io">Repository</a></p>
+  </footer>
   <script>
     (async function() {
       'use strict'
@@ -69,46 +74,52 @@
       // ========================================
       // Routing
       // ========================================
-      window.onload = () => navigate(new URL(window.location.href).searchParams.get('page') ?? 'launcher')
-      window.onpopstate = () => navigate(new URL(window.location.href).searchParams.get('page') ?? 'launcher')
+      window.onload = () => navigate(new URL(window.location.href), false)
+      window.onpopstate = () => navigate(new URL(window.location.href), false)
       document.body.addEventListener('click', e => {
         const anchor = e.target.closest('a')
-        if (!anchor)
-          return // Ignore non-links
-
-        const targetUrl = new URL(anchor.href)
-        const page = targetUrl.searchParams.get('page')
-        if (!page)
-          return // Ignore external links
-
-        const currentUrl = new URL(window.location.href)
-        if (targetUrl.searchParams.get('page') === currentUrl.searchParams.get('page'))
-          return // Ignore links to same page
-
-        e.preventDefault()
-        window.history.pushState({}, '', targetUrl)
-        navigate(page)
-      })
-
-      async function navigate(page) {
-        const template = document.createElement('template')
-
-        let res = await fetch(`./${page}.html`)
-        if (res.ok) {
-          template.innerHTML = await res.text()
-
-          Array.from(template.content.querySelectorAll('script')).forEach(old => {
-            const clone = document.createElement('script')
-            Array.from(old.attributes).forEach(attr => clone.setAttribute(attr.name, attr.value))
-            clone.text = old.text
-            old.parentNode?.replaceChild(clone, old)
-          })
-        } else {
-          template.innerHTML = '<h1>Error</h1><p></p>'
-          template.content.querySelector('p').textContent = `Could not find page "${page}"`
+        if (!anchor) {
+          return // Bubble non-links
         }
 
-        document.body.querySelector('main').replaceChildren(template.content)
+        const targetUrl = new URL(anchor.href)
+        if (!targetUrl.searchParams.get('page')) {
+          return // Bubble external links
+        }
+
+        e.preventDefault()
+        navigate(targetUrl, true)
+      })
+
+      async function navigate(/**@type {URL}*/ url, /**@type {boolean}*/ pushState) {
+        let page = url.searchParams.get('page') ?? 'launcher'
+
+        if (!pushState || (new URL(window.location).searchParams.get('page') ?? 'launcher') !== page) {
+          const template = document.createElement('template')
+
+          let res = await fetch(`./${page}.html`)
+          if (res.ok) {
+            template.innerHTML = await res.text()
+
+            Array.from(template.content.querySelectorAll('script')).forEach(old => {
+              const clone = document.createElement('script')
+              Array.from(old.attributes).forEach(attr => clone.setAttribute(attr.name, attr.value))
+              clone.text = old.text
+              old.parentNode?.replaceChild(clone, old)
+            })
+          } else {
+            template.innerHTML = '<h1>Error</h1><p></p>'
+            template.content.querySelector('p').textContent = `Could not find page "${page}"`
+          }
+
+          document.body.querySelector('main').replaceChildren(template.content)
+        }
+
+        document.body.querySelector(url.hash.length > 0 ? url.hash : '#top')?.scrollIntoView()
+
+        if (pushState) {
+          window.history.pushState({}, '', url)
+        }
       }
 
       // ========================================
