@@ -1,0 +1,66 @@
+<style>
+  #output-container {
+    margin: 2rem 0;
+    font-size: xx-large;
+  }
+</style>
+
+<h1>Countdown <span class="material-symbols-rounded">timer</span></h1>
+
+<label for="countdown-input">Countdown Target</label>
+<div class="grouped">
+  <input id="countdown-input" type="datetime-local">
+  <button id="copy-url-btn" class="button primary">Copy Countdown URL</button>
+</div>
+
+<div id="output-container" class="is-center bd-success">
+  <time datetime="">0 : 0 : 0 : 0</time>
+</div>
+
+<script>
+(async function() {
+  'use strict'
+
+  const input = document.body.querySelector('#countdown-input')
+  const button = document.body.querySelector('#copy-url-btn')
+  const timeElement = document.body.querySelector('#output-container > time')
+
+  const urlParams = new URLSearchParams(window.location.search)
+
+  let targetDate = urlParams.has('datetime')
+    ? new Date(urlParams.get('datetime'))
+    : new Date()
+
+  const year = targetDate.getFullYear()
+  const month = (targetDate.getMonth()+1).toString().padStart(2, '0')
+  const day = targetDate.getDate().toString().padStart(2, '0')
+  const hour = targetDate.getHours()
+  const minute = targetDate.getMinutes()
+  input.value = `${year}-${month}-${day}T${hour}:${minute}`
+
+  input.addEventListener('input', () => {
+    targetDate = new Date(input.value)
+  })
+
+  button.addEventListener('click', () => {
+    let url = new URL(window.location)
+    url.searchParams.set('datetime', targetDate.toISOString())
+    navigator.clipboard.writeText(url.toString())
+  })
+
+  const intervalId = setInterval(function() {
+    const now = new Date().getTime();
+    const target = targetDate.getTime();
+    const distance = target > now
+       ? target - now
+       : 0;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    timeElement.textContent = `${days} : ${hours} : ${minutes} : ${seconds}`
+    }, 1000);
+})()
+</script>
