@@ -26,10 +26,7 @@
   </div>
 </template>
 
-<script>
-(function() {
-  'use strict'
-
+<script type="module">
   const input = document.getElementById('search-input')
   const cardTemplate = document.getElementById('card-template')
   const cardContainer = document.getElementById('card-container')
@@ -57,5 +54,4 @@
       cardContainer.appendChild(clone)
     })
   }
-})()
 </script>

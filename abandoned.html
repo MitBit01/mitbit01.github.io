@@ -164,10 +164,9 @@
   </section>
 </section>
 
-<script>
-(async function() {
-  'use strict'
-  const { Random } = await import('./random.js')
+<script type="module">
+  import { Random } from './random.js'
+
   const rand = new Random()
 
   document.getElementById('new-character-btn').addEventListener('click', () => {
@@ -185,5 +184,4 @@
   document.getElementById('copy-character-btn').addEventListener('click', () => {
     navigator.clipboard.writeText(document.getElementById('new-character-out').value)
   })
-})()
 </script>

@@ -14,10 +14,7 @@
 <label for="text-output">Encoded Output</label>
 <pre><output id="text-output" name="text-output" for="text-input" data-placeholder="Output"></output></pre>
 
-<script>
-(async function() {
-  'use strict'
-
+<script type="module">
   const beadsByLetter = new Map([['0','⚪⚪⚪'],
     ['A','⚪⚪🔴'],['B','⚪⚪⚫'],['C','⚪🔴⚪'],
     ['D','⚪🔴🔴'],['E','⚪🔴⚫'],['F','⚪⚫⚪'],
@@ -74,5 +71,4 @@
     output.value += `\nMorse Beads (len=${morseBeads.length/2}):\n${morseBeads}`
     output.value += '\n'
   })
-})()
 </script>

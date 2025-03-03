@@ -17,10 +17,7 @@
   <time datetime="">0 : 0 : 0 : 0</time>
 </div>
 
-<script>
-(async function() {
-  'use strict'
-
+<script type="module">
   const input = document.body.querySelector('#countdown-input')
   const button = document.body.querySelector('#copy-url-btn')
   const timeElement = document.body.querySelector('#output-container > time')
@@ -62,5 +59,4 @@
 
     timeElement.textContent = `${days} : ${hours} : ${minutes} : ${seconds}`
     }, 1000);
-})()
 </script>

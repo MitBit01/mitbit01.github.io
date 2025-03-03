@@ -33,10 +33,9 @@
   <output id="roll-output" name="roll-output" data-placeholder="Output"></output>
 </fieldset>
 
-<script>
-(async function() {
-  'use strict'
-  const { Random } = await import('./random.js')
+<script type="module">
+  import { Random } from './random.js'
+
   const rand = new Random()
 
   const output = document.body.querySelector('#roll-output')
@@ -45,5 +44,4 @@
   .forEach(button => button.onclick = () => {
     output.value = rand.int(1, button.dataset.diceButton)
   })
-})()
 </script>
