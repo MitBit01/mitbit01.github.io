@@ -122,8 +122,8 @@
     // ========================================
     // Dark mode
     // ========================================
-    const disableDarkModeButton = document.getElementById('disable-dark-mode')
-    const enableDarkModeButton = document.getElementById('enable-dark-mode')
+    const disableDarkModeButton = document.body.querySelector('#disable-dark-mode')
+    const enableDarkModeButton = document.body.querySelector('#enable-dark-mode')
 
     disableDarkModeButton.onclick = () => setDarkMode(false)
     enableDarkModeButton.onclick = () => setDarkMode(true)

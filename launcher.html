@@ -27,9 +27,9 @@
 </template>
 
 <script type="module">
-  const input = document.getElementById('search-input')
-  const cardTemplate = document.getElementById('card-template')
-  const cardContainer = document.getElementById('card-container')
+  const input = document.body.querySelector('#search-input')
+  const cardTemplate = document.body.querySelector('#card-template')
+  const cardContainer = document.body.querySelector('#card-container')
 
   const pages = [
     { name: 'Abandoned', description: 'An RPG of Vagabonds roaming a post-apocalyptic Urth.', href: '?page=abandoned' },

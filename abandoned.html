@@ -169,8 +169,8 @@
 
   const rand = new Random()
 
-  document.getElementById('new-character-btn').addEventListener('click', () => {
-    document.getElementById('new-character-out').value =
+  document.body.querySelector('#new-character-btn').addEventListener('click', () => {
+    document.body.querySelector('#new-character-out').value =
     `${'(Name)'}, Level 0 ${'(Type)'}\n` +
     `${'(Description)'}\n` +
     `Strength ${rand.diceFormulaPostfix('2 6 d 3 +')}+ Agility ${rand.diceFormulaPostfix('2 6 d 3 +')}+ Wits ${rand.diceFormulaPostfix('2 6 d 3 +')}+\n` +
@@ -181,7 +181,7 @@
     `Where: (Starting Location)`
   })
 
-  document.getElementById('copy-character-btn').addEventListener('click', () => {
-    navigator.clipboard.writeText(document.getElementById('new-character-out').value)
+  document.body.querySelector('#copy-character-btn').addEventListener('click', () => {
+    navigator.clipboard.writeText(document.body.querySelector('#new-character-out').value)
   })
 </script>
