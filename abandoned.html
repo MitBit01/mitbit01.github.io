@@ -72,25 +72,33 @@
       </li>
       <li>
         Roll <code>1d20</code> and say what you rolled.
-        If you have Advantage, roll <code>2d20</code>and keep the highest. With Disadvantage, keep the lowest.
+        If you have Advantage, roll <code>2d20</code>and keep the highest.
+        With Disadvantage, keep the lowest.
       </li>
       <li>
-        You may spend a Luck Die to add <code>1d6</code>, calling out the new total. Repeat as you like.
+        You may spend 1 Grit to add <code>1d6</code>, calling out the new total.
+        Repeat as you like.
       </li>
       <li>
-        If you meet or exceed the <code>Target</code>, you succeed! The Judge will describe the results.
-        Otherwise, you fail! Gain 1 Luck Die. The Judge will describe the consequences.
+        The Judge will describe the results based on your total:
+        <ul>
+          <li><code>20+</code>: Critical Success!</li>
+          <li><code>Target+</code>: Success!</li>
+          <li><code>&lt;Target</code>: Failure! Gain 1 Grit!</li>
+          <li><code>1</code>: Critical Failure! Gain 1 Grit!</li>
+        </ul>
       </li>
     </ol>
 
     <p>
-      You begin each session with Luck Dice equal to your Level.
-      At the end of each adventure, the Judge will award 1 Experience.
+      You begin each session with Grit equal to your Level.
+      At the end of each dangerous session, the Judge will award 1 Experience.
       You reach the next Level when you gain 1 Experience per current Level, plus 1.
       The amount of Experience required to reach Level <math><mi>x</mi></math> is
       <math>
         <mfrac><mrow><mi>x</mi><mo>(</mo><mi>x</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow><mn>2</mn></mfrac>
       </math>.
+      When you reach the next Level, roll <code>3d6</code> for each <code>Stat</code>, improving it if the roll is less.
     </p>
 
     <p>
@@ -173,7 +181,7 @@
     document.body.querySelector('#new-character-out').value =
     `${'(Name)'}, Level 0 ${'(Type)'}\n` +
     `${'(Description)'}\n` +
-    `Strength ${rand.diceFormulaPostfix('2 6 d 3 +')}+ Agility ${rand.diceFormulaPostfix('2 6 d 3 +')}+ Wits ${rand.diceFormulaPostfix('2 6 d 3 +')}+\n` +
+    `Strength ${rand.diceFormulaPostfix('3 6 d')}+ Agility ${rand.diceFormulaPostfix('3 6 d')}+ Wits ${rand.diceFormulaPostfix('3 6 d')}+\n` +
     `Health 6 Experience 0 Luck Dice 0\n` +
     `Items: (Fill in)\n` +
     `Feats: (Fill in)\n` +
