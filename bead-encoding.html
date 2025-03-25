@@ -60,12 +60,14 @@
 
     const filtered = input.value.toUpperCase().replaceAll(/[^A-Z0-9 ]/g, '')
     const romanized = filtered.replaceAll(/[0-9]+/g, m => toRomanNumerals(m)).replaceAll(' ', '')
-    const base3Beads = ['E','0',...romanized].map(c => beadsByLetter.get(c)).join('\n')
+    const controlled = ['0',...romanized,'E']
+    const base3Beads = controlled.map(c => beadsByLetter.get(c)).join('\n')
     const morsed = Array.from(filtered).map(c => morseByCharacter.get(c)).join(' ')
     const morseBeads = filtered.split(' ').map(word => Array.from(word).map(char => morseBeadByCharacter.get(char)).join('◻️◻️')).join('◻️◻️◻️')
 
     output.value = `Filtered: ${filtered}`
     output.value += `\nRomanized: ${romanized}`
+    output.value += `\nControlled: ${controlled.join('')}`
     output.value += `\nBase3 Beads (len=${romanized.length * 3 + 6}):\n${base3Beads}`
     output.value += `\nMorse (len=${morsed.length}):\n${morsed}`
     output.value += `\nMorse Beads (len=${morseBeads.length/2}):\n${morseBeads}`
