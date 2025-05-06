@@ -1,0 +1,78 @@
+<style>
+  .banner {
+    padding: 0.5em;
+    background-color: goldenrod;
+  }
+</style>
+
+<p class="banner is-vertical-align"><span class="material-symbols-rounded">warning</span> This page connects to servers and browsers on the internet. They will have access to your public IP address.</p>
+<p class="banner is-vertical-align"><span class="material-symbols-rounded">warning</span> The join button is currently disabled.</p>
+
+<h1>Ro-Sham-Brawl 👑⛰️ 🪨📃✂️</h1>
+<p><em>Multiplayer King-of-the-Hill Rock-Paper-Scissors.</em></p>
+
+<h2>How to Play</h2>
+
+<ol>
+  <li>Decide on a Room ID with your friends.</li>
+  <li>Enter a Nickname and Room ID and click Join.</li>
+  <li>Once everyone has joined, click Ready.</li>
+  <li>In each Round, choose a Weapon. Rock loses to Paper, which loses to Scissors, which loses to Rock.</li>
+  <li><strong>The players who defeat the most opponents advance to the next round.</strong></li>
+  <li>The last player remaining wins!</li>
+</ol>
+
+<p><em>The game currently doesn't have any cheat-protection. Only play with your friends.</em></p>
+
+<h2>Game</h2>
+
+<div id="game-container">
+
+</div>
+
+<template id="form-template">
+  <div class="grouped is-full-width">
+    <input type="text" id="nickname" required minlength="4" placeholder="Nickname (4+ characters)">
+    <input type="text" id="room-id" required minlength="8" placeholder="Room ID (4+ characters)">
+    <button type="button" class="button primary">Join</button>
+  </div>
+</template>
+
+<script type="module">
+  import * as trystero from 'https://cdn.jsdelivr.net/npm/trystero/torrent/+esm'
+
+  const appId = 'b6e2f69b-2967-41c3-9ff3-9d1487860dd9'
+  const gameContainer = document.querySelector('#game-container')
+  const formTemplate = document.querySelector('#form-template')
+
+  const gameState = {}
+
+  function newGame() {
+    const clone = formTemplate.content.cloneNode(true)
+
+    //clone.querySelector('button').addEventListener('click', joinGame)
+
+    gameContainer.replaceChildren(clone)
+  }
+
+  function joinGame() {
+    const nicknameInput = gameContainer.querySelector('#nickname')
+    const roomIdInput = gameContainer.querySelector('#room-id')
+
+    if (nicknameInput.value.length < 4 || roomIdInput.value.length < 4) {
+      nicknameInput.value = ''
+      roomIdInput.value = ''
+      return
+    }
+
+    gameState.nickname = nicknameInput.value
+    gameState.roomId = roomIdInput.value
+    gameState.room = trystero.joinRoom({ appId }, gameState.roomId) // Need to check the rate limit ; consider DIY with public MQTT servers
+
+    gameState.room.onPeerJoin(peerId => console.log(`${peerId} joined`))
+    gameState.room.onPeerLeave(peerId => console.log(`${peerId} left`))
+  }
+
+  newGame()
+
+</script>
