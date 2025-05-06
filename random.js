@@ -18,55 +18,62 @@ export class Random {
   }
 
   /**
+   * @returns A pseudorandom number within [0, 1).
+   */
+  random() {
+    return this.provider()
+  }
+
+  /**
+   * @param {number} size The size of the die to roll.
+   * @returns An integer within [1, size].
+   */
+  roll(size) {
+    return Math.floor(this.random() * size + 1);
+  }
+
+  /**
+   * @param {number} limit The exclusive upper bound.
+   * @returns An integer within [0, limit).
+   */
+  index(limit) {
+    return Math.floor(this.random() * limit)
+  }
+
+  /**
    * @param {number} min
    * @param {number} max
+   * @returns An integer within [min, max]
    */
-  int(min, max) {
-    return Math.floor(this.provider() * (max - min + 1) + min)
-  }
-
-  /**
-   * @param {number} count
-   * @param {number} size
-   */
-  dice(count, size) {
-    let sum = 0
-    for (let i = 0; i < count; i++) {
-      sum += this.int(1, size)
-    }
-    return sum
-  }
-
-  /**
-   * @param {string} formula A dice formula in postfix notation. Operands are space-separated, and anything parseFloat as a number
-   */
-  diceFormulaPostfix(formula) {
-    /**@type {number[]}*/ const stack = []
-    const at = (/**@type {number}*/ i) => stack.at(-i) ?? 0
-    const splice = (/**@type {number}*/ c, /**@type {number}*/ v) => stack.splice(-c, c, v)
-
-    for (const token of formula.split(' ').filter(t => t.length > 0)) {
-      switch (token) {
-        case 'd': splice(2, this.dice(at(2), at(1))); break;
-        case '+': splice(2, at(2) + at(1)); break;
-        case '-': splice(2, at(2) - at(1)); break;
-        default: if (!isNaN(parseFloat(token))) { stack.push(parseFloat(token)) } break;
-      }
-    }
-    return stack.pop()
+  between(min, max) {
+    return Math.floor(this.random() * (max - min + 1) + min)
   }
 
   /**
    * @template T
-   * @param {T[]} arr
-   * @returns T
+   * @param {T[]} arr The array of items to draw from.
+   * @returns A random item from the array.
    */
   draw(arr) {
-    return arr[this.int(0, arr.length-1)]
+    return arr[this.index(arr.length)]
+  }
+
+  /**
+   * @template T
+   * @param {T[]} arr The array of items to shuffle.
+   * @returns A shuffled copy of the array.
+   */
+  shuffle(arr) {
+    const res = [...arr]
+    for (let i = res.length - 1; i >= 1; i--) {
+        const j = this.between(0, i);
+        [res[i], res[j]] = [res[j], res[i]];
+    }
+    return res
   }
 
   hexId() {
-    return this.int(1, 0xfffffffe).toString(16)
+    return this.between(1, 0xfffffffe).toString(16)
   }
 }
 

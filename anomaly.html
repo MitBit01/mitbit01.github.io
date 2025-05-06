@@ -158,9 +158,6 @@
     <h3>Characters</h3>
 
     <button id="new-character-btn" class="button primary">New Character</button>
-    <button id="copy-character-btn" class="button">Copy Character</button>
-
-    <pre><output id="new-character-out" for="new-character-btn" data-placeholder="Output"></output></pre>
 
     <a href="#top">Top</a>
   </section>
@@ -170,26 +167,73 @@
 
     <a href="#top">Top</a>
   </section>
+
 </section>
 
+<script id="tmpl-char" type="text/markdown">
+### {{name}}
+**{{name}}** (*Player*), {{alignment}}{{#background}} {{.}}{{/background}}
+**Score** 0 **Level** 1 **Luck** 1 **Health** 6
+**Strength** {{strength}} **Agility** {{agility}} **Presence** {{presence}} **Toughness** {{toughness}} **Spirit** {{spirit}}
+**Gear:**
+{{#gear}}
+- {{.}}
+{{/gear}}
+- 3 rations
+- 10 coins
+
+**Notes:**
+- Currently at *some location*
+
+**History:**
+- Born on {{birthday}}.
+- Created on {{today}}.
+- *Went on many adventures*.
+- Died *sometime in the future*.
+</script>
+
 <script type="module">
+  import mustache from 'https://cdn.jsdelivr.net/npm/mustache/+esm'
   import { Random } from './random.js'
+
+  /**
+   * @param {string} selectors A string containing one or more CSS selectors to match
+   * @returns Element[] An array of Elements where each element that matches at least one of the selectors
+   */
+  function $(selectors) {
+    return Array.from(document.body.querySelectorAll(selectors))
+  }
+
+  const arrOfLen = n => Array.from({length:n})
+  const zip = (a, ...as) => a.map((v, i) => [v, ...as.map(a => a[i])])
+  const sum = a => a.reduce((s, n) => { s += n; return s })
 
   const rand = new Random()
 
-  document.body.querySelector('#new-character-btn').addEventListener('click', () => {
-    document.body.querySelector('#new-character-out').value =
-    `${'(Name)'}, Level 0 ${'(Type)'}\n` +
-    `${'(Description)'}\n` +
-    `Strength ${rand.diceFormulaPostfix('3 6 d')}+ Agility ${rand.diceFormulaPostfix('3 6 d')}+ Wits ${rand.diceFormulaPostfix('3 6 d')}+\n` +
-    `Health 6 Experience 0 Luck Dice 0\n` +
-    `Items: (Fill in)\n` +
-    `Feats: (Fill in)\n` +
-    `Bonds: (Fill in)\n` +
-    `Where: (Starting Location)`
-  })
+  $('#new-character-btn')[0].addEventListener('click', () => {
+    const rolls = arrOfLen(5).map(e => rand.roll(4))
+    const flips = rolls.map(roll => 5 - roll)
+    const scores = zip(rolls, rand.shuffle(flips)).map(pair => 6 + pair[0] + pair[1])
 
-  document.body.querySelector('#copy-character-btn').addEventListener('click', () => {
-    navigator.clipboard.writeText(document.body.querySelector('#new-character-out').value)
+    const longStyle = Intl.DateTimeFormat('en-us', { dateStyle: 'long' })
+    const today = new Date()
+    let birthday = new Date()
+    birthday.setDate(birthday.getDate() - (365*15) - (365*(rand.roll(4)+rand.roll(4))) - rand.roll(365))
+
+    const view = {
+      name: 'Joe',
+      alignment: rand.draw(['Lawful', 'Neutral', 'Chaotic', 'Unaligned']),
+      strength: scores[0],
+      agility: scores[1],
+      presence: scores[2],
+      toughness: scores[3],
+      spirit: scores[4],
+      birthday: longStyle.format(birthday),
+      today: longStyle.format(today)
+    }
+
+    const output = mustache.render($('#tmpl-char')[0].textContent, view)
+    const win = window.open('', '_blank', 'width=1000,height=500')
+    win.document.write(`<pre>${output}</pre>`)
   })
 </script>
