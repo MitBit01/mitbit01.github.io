@@ -1,0 +1,40 @@
+/* @import url('https://unpkg.com/sanitize.css');
+@import url('https://unpkg.com/sanitize.css/forms.css');
+@import url('https://unpkg.com/sanitize.css/assets.css');
+@import url('https://unpkg.com/sanitize.css/typography.css');
+@import url('https://unpkg.com/sanitize.css/reduce-motion.css'); */
+
+@import url('https://unpkg.com/chota@latest');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,0,0'); /* https://fonts.google.com/icons */
+
+:root {
+  --bg-color: hsl(45 50% 75%);
+  --bg-secondary-color: hsl(45 60% 65%);
+
+  --color-lightGrey: hsl(45 15% 85%); /* button background */
+  --color-grey: hsl(45 15% 50%);
+  --color-darkGrey: hsl(45 15% 25%); /* button text */
+
+  --color-primary: hsl(120 75% 30%);
+  --color-error: hsl(0 65% 50%);
+  --color-success: hsl(120 80% 40%);
+
+  --font-color: hsl(0 0% 20%);
+
+  --font-family-sans: "Roboto", sans-serif;
+  --font-family-mono: "Roboto Mono", monaco, "Consolas", "Lucida Console", monospace;
+}
+
+header, main, footer, hr {
+  margin: 1em;
+}
+
+hr {
+  background-color: var(--font-color);
+}
+
+fieldset {
+  border-color: var(--font-color);
+}

@@ -64,10 +64,12 @@ export class Random {
    * @returns A shuffled copy of the array.
    */
   shuffle(arr) {
-    const res = [...arr]
+    const res = structuredClone(arr)
     for (let i = res.length - 1; i >= 1; i--) {
         const j = this.between(0, i);
-        [res[i], res[j]] = [res[j], res[i]];
+        const tmp = res[i]
+        res[i] = res[j]
+        res[j] = tmp
     }
     return res
   }

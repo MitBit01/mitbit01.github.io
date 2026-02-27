@@ -1,148 +1,98 @@
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>mitbit01.github.io</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>🧮</text></svg>"></link>
-  <style>
-    @import url("https://unpkg.com/chota@latest"); /* https://jenil.github.io/chota/ */
-    @import url('https://fonts.googleapis.com/css2?family=Metamorphous&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,0,0'); /* https://fonts.google.com/icons */
-
-    :root {
-      --font-family-sans: "Roboto", sans-serif;
-      --font-family-mono: "Roboto Mono", monospace;
-    }
-
-    .text-normal {
-      color:var(--font-color);
-    }
-
-    body.dark {
-      --bg-color: #000;
-      --bg-secondary-color: #131316;
-      --font-color: #f5f5f5;
-      --color-grey: #ccc;
-      --color-darkGrey: #777;
-    }
-  </style>
+  <link rel="icon" href="/assets/favicon.svg"></link>
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 </head>
-
 <body class="container">
-  <header id="top" class="nav is-vertical-align">
-    <div class="nav-left">
-      <a class="button icon-only clear" href="?page=launcher">
-        <span class="material-symbols-rounded">rocket_launch</span>
-      </a>
-    </div>
-    <div class="nav-center">
-      <span><code>mitbit01.github.io</code></span>
-    </div>
-    <div class="nav-right">
-      <button id="disable-dark-mode" class="button icon-only clear">
-        <span class="material-symbols-rounded">light_mode</span>
-      </button>
-      <button id="enable-dark-mode" class="button icon-only clear">
-        <span class="material-symbols-rounded">dark_mode</span>
-      </button>
-    </div>
+
+  <header id="top">
+    <a class="is-vertical-align" href="/">
+      <span class="material-symbols-rounded">rocket_launch</span>
+      <span>mitbit01.github.io</span>
+    </a>
   </header>
+
   <hr>
+
   <main>
+    <h1>mitbit01.github.io</h1>
+    <p>
+      A collection of tools, games, and links made as a simple website.
+      You should try making your own!
+      Remember to keep it simple.
+      I used to use frameworks, then I built my own simple one, then I got rid of that!
+    </p>
+    <form role="search" action="javascript:void(0);">
+      <fieldset class="grouped is-vertical-align">
+        <legend>Search</legend>
+        <span class="material-symbols-rounded">search</span>
+        <input type="search" id="inp-search" >
+        <button type="button" id="btn-clear" class="button outline secondary icon-only">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </fieldset>
+    </form>
+    <table id="tab-pages" class="striped">
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="/tools/bead-encoding.html">Bead Encoding</a></td>
+          <td>Tool</td>
+          <td>Encodes a string into beads.</td>
+        </tr>
+        <tr>
+          <td><a href="/tools/countdown.html">Countdown</a></td>
+          <td>Tool</td>
+          <td>Countdown to (or count-up from) points in time.</td>
+        </tr>
+        <tr>
+          <td><a href="/tools/hex-site.html">Hex Site</a></td>
+          <td>Tool</td>
+          <td>Generate an adventure site in a Hex. Inspired by Mythic Bastionland.</td>
+        </tr>
+        <tr>
+          <td><a href="/tools/soul-spire/">Soul Spire</a></td>
+          <td>Tool</td>
+          <td>Render cards for Tabletop Simulator or Print & Play.</td>
+        </tr>
+      </tbody>
+    </table>
   </main>
+
   <hr>
-  <footer class="text-center">
-    <p>©️ Mitchell Petit, 2024-2025, available under MIT license.</p>
+
+  <footer>
+    <p>©️ Mitchell Petit, 2021-2025, available under the MIT license.</p>
     <p><a href="#top">Top</a> | <a href="https://github.com/MitBit01/mitbit01.github.io">Repository</a></p>
   </footer>
+
   <script type="module">
-    // ========================================
-    // Helpers
-    // ========================================
-    function load(key) {
-      return JSON.parse(window.sessionStorage.getItem(key))
-    }
+    $('#inp-search').on('input', function() {
+      const searchTerms = this.value.toLowerCase().split(/\s+/)
 
-    function save(key, value) {
-      value == null ? window.sessionStorage.removeItem(key) : window.sessionStorage.setItem(key, JSON.stringify(value))
-    }
-
-    // ========================================
-    // Routing
-    // ========================================
-    window.onload = () => navigate(new URL(window.location.href), false)
-    window.onpopstate = () => navigate(new URL(window.location.href), false)
-    document.body.addEventListener('click', e => {
-      const anchor = e.target.closest('a')
-      if (!anchor) {
-        return // Bubble non-links
-      }
-
-      const targetUrl = new URL(anchor.href)
-      if (!targetUrl.searchParams.get('page')) {
-        return // Bubble external links
-      }
-
-      e.preventDefault()
-      navigate(targetUrl, true)
+      $('#tab-pages tbody tr').each(function(_, elem) {
+        const tr = $(elem)
+        const targetTerms = tr.text().toLowerCase()
+        tr.toggle(searchTerms.every(st => targetTerms.includes(st)))
+      })
     })
 
-    async function navigate(/**@type {URL}*/ url, /**@type {boolean}*/ pushState) {
-      let page = url.searchParams.get('page') ?? 'launcher'
-
-      if (!pushState || (new URL(window.location).searchParams.get('page') ?? 'launcher') !== page) {
-        const template = document.createElement('template')
-
-        let res = await fetch(`./${page}.html`)
-        if (res.ok) {
-          template.innerHTML = await res.text()
-
-          Array.from(template.content.querySelectorAll('script')).forEach(old => {
-            const clone = document.createElement('script')
-            Array.from(old.attributes).forEach(attr => clone.setAttribute(attr.name, attr.value))
-            clone.text = old.text
-            old.parentNode?.replaceChild(clone, old)
-          })
-        } else {
-          template.innerHTML = '<h1>Error</h1><p></p>'
-          template.content.querySelector('p').textContent = `Could not find page "${page}"`
-        }
-
-        document.body.querySelector('main').replaceChildren(template.content)
-      }
-
-      document.body.querySelector(url.hash.length > 0 ? url.hash : '#top')?.scrollIntoView()
-
-      if (pushState) {
-        window.history.pushState({}, '', url)
-      }
-    }
-
-    // ========================================
-    // Dark mode
-    // ========================================
-    const disableDarkModeButton = document.body.querySelector('#disable-dark-mode')
-    const enableDarkModeButton = document.body.querySelector('#enable-dark-mode')
-
-    disableDarkModeButton.onclick = () => setDarkMode(false)
-    enableDarkModeButton.onclick = () => setDarkMode(true)
-
-    function setDarkMode(enabled) {
-      save('dark-mode', enabled)
-      if (enabled) {
-        document.body.classList.add('dark')
-        disableDarkModeButton.classList.remove('is-hidden')
-        enableDarkModeButton.classList.add('is-hidden')
-      } else {
-        document.body.classList.remove('dark')
-        disableDarkModeButton.classList.add('is-hidden')
-        enableDarkModeButton.classList.remove('is-hidden')
-      }
-    }
-
-    setDarkMode(load('dark-mode') ?? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches))
+    $('#btn-clear').on('click', function() {
+      $('#inp-search').val('')
+      $('#tab-pages tr').toggle(true)
+    })
   </script>
-</body>
 
+</body>
 </html>
