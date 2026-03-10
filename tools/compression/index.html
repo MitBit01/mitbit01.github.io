@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compression Tool</title>
+  <link rel="icon" href="/assets/favicon.svg"></link>
+  <link rel="stylesheet" href="/assets/main.css">
+  <style>
+    pre.out {
+      max-width: 80vw;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+    }
+  </style>
+  <script type="module" src="./compression.js"></script>
+</head>
+<body class="container">
+
+  <header id="top">
+    <a class="is-vertical-align" href="/">
+      <span class="material-symbols-rounded">rocket_launch</span>
+      <span>mitbit01.github.io</span>
+    </a>
+  </header>
+
+  <hr>
+
+  <main>
+    <h1>Compression Tool</h1>
+
+    <p>
+      Originally, this tool was used to compare CBOR and DEFLATE.
+      This was to assess their use for encoding gamestates in a url
+      with base64 encoding. Of course, CBOR is not a compression
+      algorithm, but it may have been useful for this case. CBOR
+      was removed from this page since it's output was larger than
+      DEFLATE, required a third-party library, and requres
+      JSON-able input.
+    </p>
+
+    <form action="javascript:void(0);">
+      <fieldset>
+        <legend>Text to Compress</legend>
+        <span class="material-symbols-rounded">input</span>
+        <textarea id="txa-input"></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>DEFLATE-RAW</legend>
+        <p class="is-vertical-align">
+          <span class="material-symbols-rounded">output</span>
+          DEFLATE Hex Output (Length: <span class="out deflate-raw hex">0</span>)
+        </p>
+        <pre class="out deflate-raw hex">
+        </pre>
+
+        <p class="is-vertical-align">
+          <span class="material-symbols-rounded">output</span>
+          DEFLATE Base64 Output (Length: <span class="out deflate-raw b64">0</span>)</p>
+        <pre class="out deflate-raw b64">
+        </pre>
+      </fieldset>
+
+      <fieldset>
+        <legend>Brotli</legend>
+        <p class="is-vertical-align">
+          <span class="material-symbols-rounded">output</span>
+          Brotli Hex Output (Length: <span class="out brotli hex">0</span>)
+        </p>
+        <pre class="out brotli hex">
+        </pre>
+
+        <p class="is-vertical-align">
+          <span class="material-symbols-rounded">output</span>
+          Brotli Base64 Output (Length: <span class="out brotli b64">0</span>)</p>
+        <pre class="out brotli b64">
+        </pre>
+      </fieldset>
+
+    </form>
+  </main>
+
+  <hr>
+
+  <footer>
+    <p class="is-center">©️ Mitchell Petit, 2021-2026, available under the MIT license.</p>
+    <p class="is-center">
+      <span>
+        <a href="#top">Top</a>
+        |
+        <a href="https://github.com/MitBit01/mitbit01.github.io">Repository</a>
+      </span>
+    </p>
+  </footer>
+
+</body>
+</html>
