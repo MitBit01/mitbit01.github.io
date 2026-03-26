@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mitbit01.github.io</title>
+  <link rel="icon" href="/assets/favicon.svg"></link>
+  <link rel="stylesheet" href="/assets/main.css">
+  <style>
+    .hexgrid-container {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: repeat(10, 1fr);
+      grid-template-rows: repeat(21, 1fr);
+      gap: 5px;
+
+      padding: 5px;
+      width: 10in;
+      height: 10in;
+
+      background-color: black;
+    }
+
+    .hexgrid-cell {
+      grid-row: span 2;
+      text-align: center;
+    }
+
+    .hexgrid-hole {
+      background-color: black;
+      color: white;
+    }
+
+    .evnrow.evncol {
+      background-color: pink;
+    }
+
+    .evnrow.oddcol {
+      background-color: lightgreen;
+    }
+
+    .oddrow.evncol {
+      background-color: lightblue;
+    }
+
+    .oddrow.oddcol {
+      background-color: lightyellow;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+</head>
+<body class="container">
+
+  <header id="top">
+    <a class="is-vertical-align" href="/">
+      <span class="material-symbols-rounded">rocket_launch</span>
+      <span>mitbit01.github.io</span>
+    </a>
+  </header>
+
+  <hr>
+
+  <main>
+    <h1>Hex Grid</h1>
+    <div class="container is-center">
+      <div class="hexgrid-container">
+
+        <div class="hexgrid-cell c01 r01 evnrow evncol">01.01</div>
+        <div class="hexgrid-cell c01 r02 evnrow oddcol">01.02</div>
+        <div class="hexgrid-cell c01 r03 evnrow evncol">01.03</div>
+        <div class="hexgrid-cell c01 r04 evnrow oddcol">01.04</div>
+        <div class="hexgrid-cell c01 r05 evnrow evncol">01.05</div>
+        <div class="hexgrid-cell c01 r06 evnrow oddcol">01.06</div>
+        <div class="hexgrid-cell c01 r07 evnrow evncol">01.07</div>
+        <div class="hexgrid-cell c01 r08 evnrow oddcol">01.08</div>
+        <div class="hexgrid-cell c01 r09 evnrow evncol">01.09</div>
+        <div class="hexgrid-cell c01 r10 evnrow oddcol">01.10</div>
+
+        <div class="hexgrid-hole"></div>
+        <div class="hexgrid-hole"></div>
+
+        <div class="hexgrid-cell c02 r01 oddrow evncol">02.01</div>
+        <div class="hexgrid-cell c02 r02 oddrow oddcol">02.02</div>
+        <div class="hexgrid-cell c02 r03 oddrow evncol">02.03</div>
+        <div class="hexgrid-cell c02 r04 oddrow oddcol">02.04</div>
+        <div class="hexgrid-cell c02 r05 oddrow evncol">02.05</div>
+        <div class="hexgrid-cell c02 r06 oddrow oddcol">02.06</div>
+        <div class="hexgrid-cell c02 r07 oddrow evncol">02.07</div>
+        <div class="hexgrid-cell c02 r08 oddrow oddcol">02.08</div>
+        <div class="hexgrid-cell c02 r09 oddrow evncol">02.09</div>
+        <div class="hexgrid-cell c02 r10 oddrow oddcol">02.10</div>
+
+        <div class="hexgrid-cell c03 r01 evnrow evncol">03.01</div>
+        <div class="hexgrid-cell c03 r02 evnrow oddcol">03.02</div>
+        <div class="hexgrid-cell c03 r03 evnrow evncol">03.03</div>
+        <div class="hexgrid-cell c03 r04 evnrow oddcol">03.04</div>
+        <div class="hexgrid-cell c03 r05 evnrow evncol">03.05</div>
+        <div class="hexgrid-cell c03 r06 evnrow oddcol">03.06</div>
+        <div class="hexgrid-cell c03 r07 evnrow evncol">03.07</div>
+        <div class="hexgrid-cell c03 r08 evnrow oddcol">03.08</div>
+        <div class="hexgrid-cell c03 r09 evnrow evncol">03.09</div>
+        <div class="hexgrid-cell c03 r10 evnrow oddcol">03.10</div>
+
+        <div class="hexgrid-hole"></div>
+        <div class="hexgrid-hole"></div>
+
+        <div class="hexgrid-cell c04 r01 oddrow evncol">04.01</div>
+        <div class="hexgrid-cell c04 r02 oddrow oddcol">04.02</div>
+        <div class="hexgrid-cell c04 r03 oddrow evncol">04.03</div>
+        <div class="hexgrid-cell c04 r04 oddrow oddcol">04.04</div>
+        <div class="hexgrid-cell c04 r05 oddrow evncol">04.05</div>
+        <div class="hexgrid-cell c04 r06 oddrow oddcol">04.06</div>
+        <div class="hexgrid-cell c04 r07 oddrow evncol">04.07</div>
+        <div class="hexgrid-cell c04 r08 oddrow oddcol">04.08</div>
+        <div class="hexgrid-cell c04 r09 oddrow evncol">04.09</div>
+        <div class="hexgrid-cell c04 r10 oddrow oddcol">04.10</div>
+
+        <div class="hexgrid-cell c05 r01 evnrow evncol">05.01</div>
+        <div class="hexgrid-cell c05 r02 evnrow oddcol">05.02</div>
+        <div class="hexgrid-cell c05 r03 evnrow evncol">05.03</div>
+        <div class="hexgrid-cell c05 r04 evnrow oddcol">05.04</div>
+        <div class="hexgrid-cell c05 r05 evnrow evncol">05.05</div>
+        <div class="hexgrid-cell c05 r06 evnrow oddcol">05.06</div>
+        <div class="hexgrid-cell c05 r07 evnrow evncol">05.07</div>
+        <div class="hexgrid-cell c05 r08 evnrow oddcol">05.08</div>
+        <div class="hexgrid-cell c05 r09 evnrow evncol">05.09</div>
+        <div class="hexgrid-cell c05 r10 evnrow oddcol">05.10</div>
+
+        <div class="hexgrid-hole"></div>
+        <div class="hexgrid-hole"></div>
+
+        <div class="hexgrid-cell c06 r01 oddrow evncol">06.01</div>
+        <div class="hexgrid-cell c06 r02 oddrow oddcol">06.02</div>
+        <div class="hexgrid-cell c06 r03 oddrow evncol">06.03</div>
+        <div class="hexgrid-cell c06 r04 oddrow oddcol">06.04</div>
+        <div class="hexgrid-cell c06 r05 oddrow evncol">06.05</div>
+        <div class="hexgrid-cell c06 r06 oddrow oddcol">06.06</div>
+        <div class="hexgrid-cell c06 r07 oddrow evncol">06.07</div>
+        <div class="hexgrid-cell c06 r08 oddrow oddcol">06.08</div>
+        <div class="hexgrid-cell c06 r09 oddrow evncol">06.09</div>
+        <div class="hexgrid-cell c06 r10 oddrow oddcol">06.10</div>
+
+        <div class="hexgrid-cell c07 r01 evnrow evncol">07.01</div>
+        <div class="hexgrid-cell c07 r02 evnrow oddcol">07.02</div>
+        <div class="hexgrid-cell c07 r03 evnrow evncol">07.03</div>
+        <div class="hexgrid-cell c07 r04 evnrow oddcol">07.04</div>
+        <div class="hexgrid-cell c07 r05 evnrow evncol">07.05</div>
+        <div class="hexgrid-cell c07 r06 evnrow oddcol">07.06</div>
+        <div class="hexgrid-cell c07 r07 evnrow evncol">07.07</div>
+        <div class="hexgrid-cell c07 r08 evnrow oddcol">07.08</div>
+        <div class="hexgrid-cell c07 r09 evnrow evncol">07.09</div>
+        <div class="hexgrid-cell c07 r10 evnrow oddcol">07.10</div>
+
+        <div class="hexgrid-hole"></div>
+        <div class="hexgrid-hole"></div>
+
+        <div class="hexgrid-cell c08 r01 oddrow evncol">08.01</div>
+        <div class="hexgrid-cell c08 r02 oddrow oddcol">08.02</div>
+        <div class="hexgrid-cell c08 r03 oddrow evncol">08.03</div>
+        <div class="hexgrid-cell c08 r04 oddrow oddcol">08.04</div>
+        <div class="hexgrid-cell c08 r05 oddrow evncol">08.05</div>
+        <div class="hexgrid-cell c08 r06 oddrow oddcol">08.06</div>
+        <div class="hexgrid-cell c08 r07 oddrow evncol">08.07</div>
+        <div class="hexgrid-cell c08 r08 oddrow oddcol">08.08</div>
+        <div class="hexgrid-cell c08 r09 oddrow evncol">08.09</div>
+        <div class="hexgrid-cell c08 r10 oddrow oddcol">08.10</div>
+
+        <div class="hexgrid-cell c09 r01 evnrow evncol">09.01</div>
+        <div class="hexgrid-cell c09 r02 evnrow oddcol">09.02</div>
+        <div class="hexgrid-cell c09 r03 evnrow evncol">09.03</div>
+        <div class="hexgrid-cell c09 r04 evnrow oddcol">09.04</div>
+        <div class="hexgrid-cell c09 r05 evnrow evncol">09.05</div>
+        <div class="hexgrid-cell c09 r06 evnrow oddcol">09.06</div>
+        <div class="hexgrid-cell c09 r07 evnrow evncol">09.07</div>
+        <div class="hexgrid-cell c09 r08 evnrow oddcol">09.08</div>
+        <div class="hexgrid-cell c09 r09 evnrow evncol">09.09</div>
+        <div class="hexgrid-cell c09 r10 evnrow oddcol">09.10</div>
+
+        <div class="hexgrid-hole"></div>
+        <div class="hexgrid-hole"></div>
+
+        <div class="hexgrid-cell c10 r01 oddrow evncol">10.01</div>
+        <div class="hexgrid-cell c10 r02 oddrow oddcol">10.02</div>
+        <div class="hexgrid-cell c10 r03 oddrow evncol">10.03</div>
+        <div class="hexgrid-cell c10 r04 oddrow oddcol">10.04</div>
+        <div class="hexgrid-cell c10 r05 oddrow evncol">10.05</div>
+        <div class="hexgrid-cell c10 r06 oddrow oddcol">10.06</div>
+        <div class="hexgrid-cell c10 r07 oddrow evncol">10.07</div>
+        <div class="hexgrid-cell c10 r08 oddrow oddcol">10.08</div>
+        <div class="hexgrid-cell c10 r09 oddrow evncol">10.09</div>
+        <div class="hexgrid-cell c10 r10 oddrow oddcol">10.10</div>
+
+      </div>
+    </div>
+  </main>
+
+  <hr>
+
+  <footer>
+    <p class="is-center">©️ Mitchell Petit, 2021-2026, available under the MIT license.</p>
+    <p class="is-center">
+      <span>
+        <a href="#top">Top</a>
+        |
+        <a href="https://github.com/MitBit01/mitbit01.github.io">Repository</a>
+      </span>
+    </p>
+  </footer>
+
+</body>
+</html>
