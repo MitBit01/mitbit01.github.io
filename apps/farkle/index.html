@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farkle</title>
+  <link rel="icon" href="./favicon.svg"></link>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body id="top" class="container">
+
+  <!-- MAIN CONTENT -->
+
+  <h1 class="is-center">Farkle</h1>
+  <main class="container">
+  </main>
+
+  <!-- FOOTER CONTENT -->
+
+  <footer class="container">
+    <p>
+      <strong>Farkle</strong> is a push-your-luck dice game.
+      <strong>The objective</strong> is to reach at least 5000 points, then have the highest score.
+      <strong>On your turn</strong>, you roll 6 dice, aiming to roll any scoring combination.
+      Any ⚀ or ⚄ scores alone, so look out for them!
+      <strong>After your roll</strong>, you must set aside at least 1 scoring combination.
+      If you cannot, you lose the points earned this turn and your turn ends.
+      If you can, you can choose to roll again or to bank your score and end your turn.
+      You cannot bank your score until you have at least 500 points.
+      If you manage to score all 6 dice, you get to roll again <em>with all 6 dice again</em>!
+    </p>
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Dice</th>
+        <th>Score</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ace</td>
+          <td>⚀</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>Five</td>
+          <td>⚄</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>Triple Aces</td>
+          <td>⚀</td>
+          <td>1000</td>
+        </tr>
+        <tr>
+          <td>Triple Twos</td>
+          <td>⚁</td>
+          <td>200</td>
+        </tr>
+        <tr>
+          <td>Triple Threes</td>
+          <td>⚂</td>
+          <td>300</td>
+        </tr>
+        <tr>
+          <td>Triple Fours</td>
+          <td>⚃</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>Triple Fives</td>
+          <td>⚄</td>
+          <td>500</td>
+        </tr>
+        <tr>
+          <td>Triple Sixes</td>
+          <td>⚅</td>
+          <td>600</td>
+        </tr>
+        <tr>
+          <td>Four of a kind</td>
+          <td>⚃⚃⚃⚃</td>
+          <td>1000</td>
+        </tr>
+        <tr>
+          <td>Five of a kind</td>
+          <td>⚄⚄⚄⚄⚄</td>
+          <td>2000</td>
+        </tr>
+        <tr>
+          <td>Six of a kind</td>
+          <td>⚅⚅⚅⚅⚅⚅</td>
+          <td>3000</td>
+        </tr>
+        <tr>
+          <td>Three pair</td>
+          <td>⚀⚀⚁⚁⚂⚂</td>
+          <td>1500</td>
+        </tr>
+        <tr>
+          <td>Run</td>
+          <td>⚀⚁⚂⚃⚄⚅</td>
+          <td>2500</td>
+        </tr>
+      </tbody>
+    </table>
+  </footer>
+
+  <!-- NEW GAME TEMPLATE -->
+
+  <template id="tmp-new-game">
+    <div class="row is-center">
+      <div class="col-6">
+        <div class="card">
+          <h2>New Game</h2>
+          <fieldset>
+            <legend>Players</legend>
+            <div class="player-name" data-player-number="1">
+              <label for="inp-player-1">Player 1</label>
+              <input type="text" name="inp-player-1" id="inp-player-1" placeholder="Name">
+            </div>
+            <div class="player-name" data-player-number="2">
+              <label for="inp-player-2">Player 2</label>
+              <input type="text" name="inp-player-2" id="inp-player-2" placeholder="Name">
+            </div>
+          </fieldset>
+          <div class="grouped is-center">
+            <button id="btn-add" class="button success">Add Player</button>
+            <button id="btn-remove" class="button error">Remove Player</button>
+            <button id="btn-start" class="button primary">Start</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <!-- GAME TURN TEMPLATE -->
+
+  <template id="tmp-game-turn">
+    <div class="row is-center">
+      <div class="col-6">
+        <div class="card">
+          <h2>Dice</h2>
+          <div id="div-status">
+
+          </div>
+          <hr>
+          <div id="div-dice">
+            <p>You haven't rolled any dice yet.</p>
+          </div>
+          <hr>
+          <div id="div-actions">
+            <button id="btn-roll" class="button">Roll!</button>
+            <button id="btn-bank" class="button success" disabled>Bank!</button>
+            <button id="btn-bust" class="button error" disabled>Bust!</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div id="players" class="card">
+          <h2>Players</h2>
+          <table>
+            <thead>
+              <th>Player</th>
+              <th>Score</th>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <!-- GAME OVER TEMPLATE -->
+
+  <template id="tmp-game-over">
+
+  </template>
+</body>
+</html>
