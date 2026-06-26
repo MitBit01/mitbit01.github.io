@@ -1,0 +1,16 @@
+cid	name	type	template
+ALP-001	Plains	Basic Land - Plains	fullart-land
+ALP-002	Island	Basic Land - Island	fullart-land
+ALP-003	Swamp	Basic Land - Swamp	fullart-land
+ALP-004	Mountain	Basic Land - Mountain	fullart-land
+ALP-005	Forest	Basic Land - Forest	fullart-land
+ALP-006	Frontier Tundra	Land - Frontier Plains Island	fullart-land
+ALP-007	Frontier Underground Sea	Land - Frontier Island Swamp	fullart-land
+ALP-008	Frontier Badlands	Land - Frontier Swamp Mountain	fullart-land
+ALP-009	Frontier Taiga	Land - Frontier Mountain Forest	fullart-land
+ALP-010	Frontier Savannah	Land - Frontier Forest Plains	fullart-land
+ALP-011	Frontier Scrubland	Land - Frontier Plains Swamp	fullart-land
+ALP-012	Frontier Volcanic Island	Land - Frontier Island Mountain	fullart-land
+ALP-013	Frontier Bayou	Land - Frontier Swamp Forest	fullart-land
+ALP-014	Frontier Plateau	Land - Frontier Mountain Plains	fullart-land
+ALP-015	Frontier Tropical Island	Land - Frontier Forest Island	fullart-land
